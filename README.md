@@ -1,7 +1,7 @@
 # Task
 Basic CRUD mengenai data produk
 
-###Field
+### Field
 1. Product Id
 2. Product Name
 3. Product Category -> char(3)
@@ -18,7 +18,7 @@ Simpan minimal 10 data produk. Untuk Product Category gunakan Enum dan valuenya 
 |3| Peralatan Mandi | MAN |
 |4| Peralatan Makan | MKN |
 
-###Fungsi
+### Fungsi
 1. Simpan, Update, Delete produk
 2. Cari produk berdasarkan Id
 3. Cari produk berdasarkan nama
