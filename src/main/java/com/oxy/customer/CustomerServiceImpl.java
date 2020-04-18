@@ -55,4 +55,17 @@ public class CustomerServiceImpl implements CustomerService {
         return customers;
     }
 
+    @Override
+    @Transactional(readOnly = false)
+    public void delete(String id) {
+        customerDAO.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+    public void updateCustomer(Customer customer, String id) {
+        customer.setId(id);
+        customerDAO.save(customer);
+    }
+
 }

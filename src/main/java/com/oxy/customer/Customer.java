@@ -1,6 +1,10 @@
 package com.oxy.customer;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customer")
@@ -15,9 +19,12 @@ public class Customer {
     @Id
     private String id;
     @Column(name = "name", length = 50)
+    @Size(max = 50)
     private String name;
 
     @Column(name ="address", length = 255)
+    @JsonProperty("customer_address")
+    @NotNull
     private String address;
 
     @Transient

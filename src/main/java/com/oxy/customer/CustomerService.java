@@ -13,4 +13,8 @@ public interface CustomerService {
     List<Customer> findByName(String customerName);
 
     List<Customer> pagingCustomer(int page, int size);
+
+    void delete(String id);
+
+    void updateCustomer(Customer customer, String id);
 }
