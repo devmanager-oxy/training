@@ -27,8 +27,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductCategory findById(String id) {
+    public ProductCategory findCategoryById(String id) {
         return productCategoryDAO.findById(id).orElse(new ProductCategory());
+    }
+
+    @Override
+    public Product findProductById(String id) {
+        return productDAO.findById(id).orElse(new Product());
     }
 
     @Override

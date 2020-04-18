@@ -8,7 +8,9 @@ public interface ProductService {
 
     void saveProduct(Product product);
 
-    ProductCategory findById(String id);
+    ProductCategory findCategoryById(String id);
+
+    Product findProductById(String id);
 
     List<Product> findAllProducts();
 }
