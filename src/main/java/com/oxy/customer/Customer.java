@@ -14,7 +14,7 @@ public class Customer {
 
     @Id
     private String id;
-    @Column(name = "name", length = 50, nullable = false)
+    @Column(name = "name", length = 50)
     private String name;
 
     @Column(name ="address", length = 255)

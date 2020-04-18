@@ -2,6 +2,9 @@ package com.oxy;
 
 import com.oxy.customer.Customer;
 import com.oxy.customer.CustomerService;
+import com.oxy.product.Product;
+import com.oxy.product.ProductCategory;
+import com.oxy.product.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,29 +17,23 @@ public class SpringOxyApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SpringOxyApplication.class, args);
-		CustomerService customerService = (CustomerService) ctx.getBean("CustomerService");
-		Customer customer = new Customer();
-		customer.setId(UUID.randomUUID().toString());
-		//customer.setName("Adi");
-		customer.setAddress("Pancoran");
-		customerService.saveCustomer(customer);
-		List<Customer> customers = customerService.findAll();
-		for (Customer cust : customers) {
-			System.out.println(" Id :" + cust.getId() + " | name :" + cust.getName());
-		}
+		ProductService productService = (ProductService) ctx.getBean("ProductService");
 
-		Customer customer1 = new Customer();
-		customer1.setName("Budi");
-		customer1.setAddress("Pancoran");
-		//customerService.saveCustomer(customer1);
-		customers = customerService.findByName("Budi");
-		System.out.println("Find by name");
-		for (Customer cust : customers) {
-			System.out.println(" Id :" + cust.getId() + " | name :" + cust.getName());
-		}
-		customers = customerService.pagingCustomer(0, 1);
-		System.out.println("page customer");
-		customers.forEach(cust ->
-				System.out.println(" Id :" + cust.getId() + " | name :" + cust.getName()));
+		String categoryUID = (UUID.randomUUID().toString());
+		ProductCategory productCategory = new ProductCategory();
+		productCategory.setId(categoryUID);
+		productCategory.setCategoryName("Makanan");
+		productService.saveProductCategory(productCategory);
+
+		ProductCategory category = productService.findById(categoryUID);
+		Product product = new Product();
+		product.setId(UUID.randomUUID().toString());
+		product.setProductName("Nasi Goreng");
+		product.setProductCategory(category);
+		productService.saveProduct(product);
+
+		List<Product> products = productService.findAllProducts();
+		products.forEach(data -> System.out.println(data.getId() + " | " + data.getProductName() +
+				"  | " + data.getProductCategory().getCategoryName()));
 	}
 }
