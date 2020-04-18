@@ -23,6 +23,9 @@ public class CustomerController {
     @GetMapping(value = "/customers")
     public ResponseEntity<List<Customer>> findCustomers(){
         List<Customer> customers = customerService.findAll();
+        if(customers.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(customers);
     }
 
