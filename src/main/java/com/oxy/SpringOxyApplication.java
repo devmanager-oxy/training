@@ -17,16 +17,15 @@ public class SpringOxyApplication {
 		CustomerService customerService = (CustomerService) ctx.getBean("CustomerService");
 		Customer customer = new Customer();
 		customer.setId(UUID.randomUUID().toString());
-		customer.setName("Adi");
+		//customer.setName("Adi");
 		customer.setAddress("Pancoran");
-		//customerService.saveCustomer(customer);
+		customerService.saveCustomer(customer);
 		List<Customer> customers = customerService.findAll();
 		for (Customer cust : customers) {
 			System.out.println(" Id :" + cust.getId() + " | name :" + cust.getName());
 		}
 
 		Customer customer1 = new Customer();
-		customer1.setId(UUID.randomUUID().toString());
 		customer1.setName("Budi");
 		customer1.setAddress("Pancoran");
 		//customerService.saveCustomer(customer1);

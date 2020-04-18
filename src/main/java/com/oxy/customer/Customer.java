@@ -6,9 +6,15 @@ import javax.persistence.*;
 @Table(name = "customer")
 public class Customer {
 
+    public Customer(){}
+
+    public Customer(String name){
+        this.name = name;
+    }
+
     @Id
     private String id;
-    @Column(name = "name", length = 50)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @Column(name ="address", length = 255)
