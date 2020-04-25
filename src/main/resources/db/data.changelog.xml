@@ -16,4 +16,12 @@
             '2020-04-25 00:00:00', '2020-04-25 00:00:00', '1234566789');
         </sql>
     </changeSet>
+    <changeSet id="init-data-user" author="arya-wiratama">
+        <sql dbms="postgresql">
+            INSERT INTO public.user(
+            id, username, password, email, is_active, role, status, created_date, updated_date)
+            VALUES ('ddc059ff-fb75-4e0a-a769-3e734a08ed96', 'arya', 'oxy1234', 'arya@mail.com', true,
+            'ROLE_ADMIN', 1, '2020-04-25 00:00:00', '2020-04-25 00:00:00');
+        </sql>
+    </changeSet>
 </databaseChangeLog>

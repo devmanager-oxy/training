@@ -31,4 +31,21 @@
             <column name="phone" type="varchar(10)"/>
         </addColumn>
     </changeSet>
+    <changeSet id="create-table-user" author="arya-wiratama">
+        <createTable tableName="user">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(50)"/>
+            <column name="password" type="varchar(50)"/>
+            <column name="email" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="is_active" type="boolean"/>
+            <column name="role" type="varchar(150)" />
+            <column name="created_date" type="datetime"/>
+            <column name="updated_date" type="datetime"/>
+            <column name="status" type="int"/>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

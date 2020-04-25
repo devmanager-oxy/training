@@ -30,7 +30,7 @@ public class SpringOxyApplication {
 		customer.setId(UUID.randomUUID().toString());
 		customer.setName("Adi");
 		customer.setAddress("Pancoran");
-		customerService.saveCustomer(customer);
+		//customerService.saveCustomer(customer);
 
 		/*String categoryUID = UUID.randomUUID().toString();
 		ProductCategory productCategory = new ProductCategory();
