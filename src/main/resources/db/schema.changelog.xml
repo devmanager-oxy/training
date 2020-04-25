@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd ">
+
+    <changeSet author="arya-wiratama" id="create-table-customer">
+        <createTable tableName="customer">
+            <column name="id" type="varchar(36)">
+                <constraints nullable="true" primaryKey="false" unique="false"/>
+            </column>
+            <column name="name" type="varchar(50)"/>
+            <column name="status" type="int"/>
+            <column name="address" type="varchar(50)"/>
+            <column name="email" type="varchar(50)">
+                <constraints unique="true"/>
+            </column>
+            <column name="created_date" type="datetime"/>
+            <column name="updated_date" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="alter-table-customer-add-primary-key" author="arya-wiratama">
+        <addPrimaryKey tableName="customer" columnNames="id"/>
+    </changeSet>
+    <changeSet id="alter-table-customer-add-phone-number" author="arya-wiratama">
+        <addColumn tableName="customer">
+            <column name="phone" type="varchar(10)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
