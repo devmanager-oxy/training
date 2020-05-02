@@ -48,4 +48,53 @@
             <column name="status" type="int"/>
         </createTable>
     </changeSet>
+    <changeSet id="remove-role-column" author="arya-wiratama">
+        <sql>
+            alter table public.user drop column role
+        </sql>
+    </changeSet>
+
+    <changeSet id="create-table-permission" author="arya-wiratama">
+        <createTable tableName="permission" >
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(60)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create-table-role" author="arya-wiratama">
+        <createTable tableName="role">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="varchar(60)">
+                <constraints unique="true" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="create-table-permission-role" author="arya-wiratama">
+        <createTable tableName="permission_role">
+            <column name="permission_id" type="varchar(36)"/>
+            <column name="role_id" type="varchar(36)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="add-foreign-key-constraint-permission-role-permission-id" author="arya-wiratama">
+        <addForeignKeyConstraint baseColumnNames="permission_id"
+                                 baseTableName="permission_role"
+                                 constraintName="fk_permission_role_permission_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="permission"
+        />
+    </changeSet>
+    <changeSet id="add-foreign-key-constraint-permission-role-role-id" author="arya-wiratama">
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="permission_role"
+                                 constraintName="fk_permission_role_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"
+        />
+    </changeSet>
 </databaseChangeLog>
