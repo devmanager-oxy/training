@@ -18,8 +18,6 @@ public class User extends GlobalEntity {
     private String email;
     @Column(name ="is_active")
     private boolean active;
-    @Column(name = "role")
-    private String role;
 
     public String getUsername() {
         return username;
@@ -53,11 +51,4 @@ public class User extends GlobalEntity {
         this.active = active;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 }
