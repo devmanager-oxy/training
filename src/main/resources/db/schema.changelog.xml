@@ -128,4 +128,42 @@
                         schemaName="public"
                         tableName="user"/>
     </changeSet>
+    <changeSet id="create-table-oauth-client-details" author="arya-wiratama">
+        <sql>
+            CREATE TABLE oauth_client_details (
+            client_id VARCHAR(255) NOT NULL PRIMARY KEY,
+            client_secret VARCHAR(255) NOT NULL,
+            resource_ids VARCHAR(255) DEFAULT NULL,
+            scope VARCHAR(255) DEFAULT NULL,
+            authorized_grant_types VARCHAR(255) DEFAULT NULL,
+            web_server_redirect_uri VARCHAR(255) DEFAULT NULL,
+            authorities VARCHAR(255) DEFAULT NULL,
+            access_token_validity NUMERIC(11) DEFAULT NULL,
+            refresh_token_validity NUMERIC(11) DEFAULT NULL,
+            additional_information VARCHAR(4096) DEFAULT NULL,
+            autoapprove VARCHAR(255) DEFAULT NULL);
+        </sql>
+    </changeSet>
+    <changeSet id="create-table-oauth-access-token" author="arya-wiratama">
+        <sql>
+            create table oauth_access_token (
+            token_id VARCHAR(255),
+            token bytea,
+            authentication_id VARCHAR(255) PRIMARY KEY,
+            user_name VARCHAR(255),
+            client_id VARCHAR(255),
+            authentication bytea,
+            refresh_token VARCHAR(255)
+            );
+        </sql>
+    </changeSet>
+    <changeSet id="create-table-oauth-refresh-token" author="arya-wiratama">
+        <sql>
+            create table oauth_refresh_token (
+            token_id VARCHAR(255),
+            token bytea,
+            authentication bytea
+            );
+        </sql>
+    </changeSet>
 </databaseChangeLog>

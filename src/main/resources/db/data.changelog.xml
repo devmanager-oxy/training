@@ -68,4 +68,16 @@
         ('6a54ced8-8249-11ea-bc55-0242ac130003', 'ddc059ff-fb75-4e0a-a769-3e734a08ed96');
         </sql>
     </changeSet>
+
+    <changeSet id="insert-oauth-client-detail-data" author="arya-wiratama">
+        <sql>
+            INSERT INTO oauth_client_details (client_id,client_secret,	resource_ids, scope,
+            authorized_grant_types,	web_server_redirect_uri,authorities,access_token_validity,refresh_token_validity,
+            additional_information,autoapprove)
+            VALUES(
+            'USER_CLIENT_APP','{bcrypt}$2y$12$.REH.oQPvJxXGhHo2iX.K./YNrvEdZpCHstg9CxlqVnznKnI5z33i', --oxyapp
+            'clientapp','read,write,trust', 'authorization_code,password,refresh_token,implicit',
+            NULL,NULL, 900,3600,'{}',NULL);
+        </sql>
+    </changeSet>
 </databaseChangeLog>
