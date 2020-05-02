@@ -24,4 +24,11 @@
             'ROLE_ADMIN', 1, '2020-04-25 00:00:00', '2020-04-25 00:00:00');
         </sql>
     </changeSet>
+
+    <changeSet id="modify-data-user" author="arya-wiratama">
+        <sql dbms="postgresql">
+            update public.user set password = '{bcrypt}$2y$12$LWJlLJVc.TGLCUsk1hpZQOUSn7iTnP2o7NEH.1H61P/3.Nr4Ia4AC' --oxy1234
+            where id='ddc059ff-fb75-4e0a-a769-3e734a08ed96';
+        </sql>
+    </changeSet>
 </databaseChangeLog>

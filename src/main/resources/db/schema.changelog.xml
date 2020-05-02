@@ -120,4 +120,12 @@
                                  referencedTableName="user"
         />
     </changeSet>
+
+    <changeSet id="change-password-column-length" author="arya-wiratama">
+        <modifyDataType catalogName="cat"
+                        columnName="password"
+                        newDataType="varchar(255)"
+                        schemaName="public"
+                        tableName="user"/>
+    </changeSet>
 </databaseChangeLog>
