@@ -1,10 +1,10 @@
 package com.oxy.config;
 
 import com.oxy.util.GlobalEntity;
+import org.springframework.data.repository.cdi.Eager;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "\"user\"")
@@ -18,6 +18,10 @@ public class User extends GlobalEntity {
     private String email;
     @Column(name ="is_active")
     private boolean active;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "role_user", joinColumns = { @JoinColumn(name="user_id")},
+    inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")})
+    private List<Role> roles;
 
     public String getUsername() {
         return username;
@@ -51,4 +55,11 @@ public class User extends GlobalEntity {
         this.active = active;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

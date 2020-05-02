@@ -15,9 +15,12 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "role_user", joinColumns = { @JoinColumn(name="role_id")},
-    inverseJoinColumns = {@JoinColumn(name="user_id", referencedColumnName = "id")})
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="permission_role", joinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "id")
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "permission_id", referencedColumnName = "id")
+    })
     private List<User> users;
 
     public String getId() {
