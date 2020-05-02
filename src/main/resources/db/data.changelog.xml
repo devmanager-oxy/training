@@ -31,4 +31,41 @@
             where id='ddc059ff-fb75-4e0a-a769-3e734a08ed96';
         </sql>
     </changeSet>
+
+    <changeSet id="add-permission-data" author="arya-wiratama">
+        <sql dbms="postgresql">
+            INSERT INTO permission (id, name) VALUES
+            ('6c3b2c28-8245-11ea-bc55-0242ac130003','can_create_user'),
+            ('6c3b2e4e-8245-11ea-bc55-0242ac130003','can_update_user'),
+            ('6c3b306a-8245-11ea-bc55-0242ac130003','can_read_user'),
+            ('6c3b315a-8245-11ea-bc55-0242ac130003','can_delete_user');
+        </sql>
+    </changeSet>
+    <changeSet id="add-role-data" author="arya-wiratama">
+        <sql dbms="postgresql">
+            INSERT INTO role (id, name) VALUES
+            ('6a54ced8-8249-11ea-bc55-0242ac130003','ROLE_ADMIN')
+            ,('6a54d130-8249-11ea-bc55-0242ac130003','ROLE_USER');
+        </sql>
+    </changeSet>
+    <changeSet id="add-role-permission-data" author="arya-wiratama">
+        <sql dbms="postgresql">
+            INSERT INTO permission_role (permission_id, role_id) VALUES
+            ('6c3b2c28-8245-11ea-bc55-0242ac130003','6a54ced8-8249-11ea-bc55-0242ac130003');
+            INSERT INTO permission_role (permission_id, role_id) VALUES
+            ('6c3b2e4e-8245-11ea-bc55-0242ac130003','6a54ced8-8249-11ea-bc55-0242ac130003');
+            INSERT INTO permission_role (permission_id, role_id) VALUES
+            ('6c3b306a-8245-11ea-bc55-0242ac130003','6a54ced8-8249-11ea-bc55-0242ac130003');
+            INSERT INTO permission_role (permission_id, role_id) VALUES
+            ('6c3b306a-8245-11ea-bc55-0242ac130003','6a54ced8-8249-11ea-bc55-0242ac130003');
+            INSERT INTO permission_role (permission_id, role_id) VALUES
+            ('6c3b306a-8245-11ea-bc55-0242ac130003','6a54d130-8249-11ea-bc55-0242ac130003');
+        </sql>
+    </changeSet>
+    <changeSet id="add-user-role-data" author="arya-wiratama">
+        <sql dbms="postgresql">
+        INSERT INTO role_user (role_id, user_id) VALUES
+        ('6a54ced8-8249-11ea-bc55-0242ac130003', 'ddc059ff-fb75-4e0a-a769-3e734a08ed96');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
