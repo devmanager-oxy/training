@@ -97,4 +97,27 @@
                                  referencedTableName="role"
         />
     </changeSet>
+    <changeSet id="create-table-role-user" author="arya-wiratama">
+        <createTable tableName="role_user">
+            <column name="role_id" type="varchar(36)"/>
+            <column name="user_id" type="varchar(36)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-foreign-key-constraint-role-user-role-id" author="arya-wiratama">
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="role_user"
+                                 constraintName="fk_role_user_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"
+        />
+    </changeSet>
+    <changeSet id="add-foreign-key-constraint-role-user-user-id" author="arya-wiratama">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="role_user"
+                                 constraintName="fk_role_user_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user"
+        />
+    </changeSet>
 </databaseChangeLog>
